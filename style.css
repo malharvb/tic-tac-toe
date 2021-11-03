@@ -1,6 +1,5 @@
 html
 {
-    padding-top: 4em;
     font-family: 'Roboto', sans-serif;
 }
 body
@@ -10,6 +9,7 @@ body
 }
 #heading
 {
+    padding-top: .5em;
     font-size: 5em;
     text-align: center;
     font-weight: bolder;
