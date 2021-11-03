@@ -1,0 +1,77 @@
+html
+{
+    padding-top: 4em;
+    font-family: 'Roboto', sans-serif;
+}
+body
+{
+    background-color: #EED971FF;
+    color: #FC6C84;
+}
+#heading
+{
+    font-size: 5em;
+    text-align: center;
+    font-weight: bolder;
+}
+.container
+{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    padding-top: 2em;
+}
+#gameboard
+{
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   width: 400px;
+   margin-top: 3em;
+   align-items: flex-start;
+   justify-content: center;
+   gap:1px;
+   border: 3px solid #FFA351FF;
+   background-color: #FFBE7BFF;
+   color: #4F86F6;
+}
+
+.cell
+{
+    border: 1px solid black;
+    font-size: 3em;
+    min-height: 120px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#diff-txt, #score, #result
+{
+    font-weight: bold;
+    font-size: 2em;
+}
+#diff
+{
+    font-size: 1em;
+    background-color: #4F86F6;
+    border-radius: 4px;
+    color: #FFBE7BFF;
+}
+
+#score
+{
+    white-space: pre;
+}
+
+@media only screen and (max-width: 600px) 
+{
+    #heading
+    {
+        font-size: 3em;
+    }
+    #diff-txt, #score, #result
+    {
+        font-size: 1em;
+    }
+
+}
