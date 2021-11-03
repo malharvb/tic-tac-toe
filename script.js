@@ -180,12 +180,11 @@ let displayController = (function (doc) {
 
 
     let diff = 0;
+    let flag = 0;
     let result = doc.querySelector('#result');
     let score = doc.querySelector('#score')
 
     let change = function () {
-        
-        
         
         cells.forEach(cell => cell.addEventListener('click', () => {
         if(cell.innerHTML == '' || (cell.innerHTML != 'X' && cell.innerHTML != 'O'))
@@ -198,19 +197,23 @@ let displayController = (function (doc) {
                 result.innerHTML = 'Player won this round'
                 gameBoard.resetBoard();
                 player1.score++;
+                flag++;
                 displayScore();
             }
             gameBoard.checkTie();
-            if (diff == 0)
-            {
-                AI.Easy();
-            }
-            else if(diff == 1)
-            {
-                let bestMove = AI.minimax(AI.input);
-                AI.printFn(bestMove.index);
-            }
             
+            if(flag != 1)
+            {
+                if (diff == 0)
+                {
+                    AI.Easy();
+                }
+                else if(diff == 1)
+                {
+                    let bestMove = AI.minimax(AI.input);
+                    AI.printFn(bestMove.index);
+                }
+            }
 
             if(gameBoard.checkWin(AI.input))
             {
@@ -220,6 +223,7 @@ let displayController = (function (doc) {
                 displayScore();
             }
             
+            flag = 0;
         
             
         }
@@ -246,7 +250,7 @@ let displayController = (function (doc) {
 
     let displayScore = () => {
 
-        score.innerHTML= `Player : ${player1.score}                             AI : ${AI.score}`
+        score.innerHTML= `Player : ${player1.score}                              AI : ${AI.score}`
 
     }
     return {change, displayScore, result}
