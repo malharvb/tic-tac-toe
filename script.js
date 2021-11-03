@@ -19,7 +19,7 @@ let gameBoard = (function (){
     let checkTie = () => {
         if(AI.emptyIndexies(gameBoard.gameState).length == 0)
         {
-            displayController.result.innerHTML = 'Tie'
+            displayController.result.innerHTML = 'Tie';
             displayController.displayScore();
             resetBoard();
         }
@@ -90,12 +90,12 @@ let AI = (function (doc) {
 
         let x = availSpots[Math.floor(Math.random() * availSpots.length)]
         printFn(x);
-        //console.log(gameBoard.gameState)
+        
         
     }
 
     let minimax = (player) => {
-        //I have taken a lot of code snippets from the FCC 
+        //I have taken a lot of code references from the FCC minimax article
         let availSpots = emptyIndexies(gameBoard.gameState);
 
         if(gameBoard.checkWin(player1.input))
@@ -202,7 +202,7 @@ let displayController = (function (doc) {
             }
             gameBoard.checkTie();
             
-            if(flag != 1)
+            if(flag == 0)
             {
                 if (diff == 0)
                 {
@@ -211,7 +211,10 @@ let displayController = (function (doc) {
                 else if(diff == 1)
                 {
                     let bestMove = AI.minimax(AI.input);
-                    AI.printFn(bestMove.index);
+                    if(bestMove.index != undefined)
+                    {
+                        AI.printFn(bestMove.index);
+                    }
                 }
             }
 
@@ -230,12 +233,12 @@ let displayController = (function (doc) {
 
         
 
-    }));
+        }));
     }
     let dropDwn = doc.querySelector('#diff')
 
     dropDwn.addEventListener('change', (e) => {
-        console.log(e.target.value)
+    
         if(e.target.value == 'easy')
         {
             diff = 0;
@@ -253,7 +256,7 @@ let displayController = (function (doc) {
         score.innerHTML= `Player : ${player1.score}                              AI : ${AI.score}`
 
     }
-    return {change, displayScore, result}
+    return {change, displayScore, result, flag}
 
     
 })(document)
