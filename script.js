@@ -194,7 +194,7 @@ let displayController = (function (doc) {
             gameBoard.gameState[cell.id[1]] = player1.input;
             if(gameBoard.checkWin(player1.input))
             {
-                result.innerHTML = 'Player won this round'
+                result.innerHTML = 'Player won last round'
                 gameBoard.resetBoard();
                 player1.score++;
                 flag++;
@@ -217,7 +217,7 @@ let displayController = (function (doc) {
 
             if(gameBoard.checkWin(AI.input))
             {
-                result.innerHTML = 'AI won this round'
+                result.innerHTML = 'AI won last round'
                 gameBoard.resetBoard();
                 AI.score++;
                 displayScore();
