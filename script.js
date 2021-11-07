@@ -200,10 +200,9 @@ let displayController = (function (doc) {
                 flag++;
                 displayScore();
             }
-            gameBoard.checkTie();
-            
             if(flag == 0)
             {
+                gameBoard.checkTie();
                 if (diff == 0)
                 {
                     AI.Easy();
